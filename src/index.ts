@@ -1,30 +1,43 @@
 const DNS_MODULE = "AQBLKpieqOfKVRgMa8k45P4S_ILYgJmswVso4vT1qzoG-A";
 
-let callModule: any,
-    connectModule: any;
+let callModule: any, connectModule: any;
 
 async function loadLibs() {
-    if (callModule && connectModule) {
-        return;
-    }
-    if (typeof window !== "undefined" && window?.document) {
-        const pkg = (await import("libkernel"));
-        callModule = pkg.callModule;
-        connectModule = pkg.connectModule;
-    } else {
-        const pkg = (await import("libkmodule"));
-        callModule = pkg.callModule;
-        connectModule = pkg.connectModule;
-    }
+  if (callModule && connectModule) {
+    return;
+  }
+  if (typeof window !== "undefined" && window?.document) {
+    const pkg = await import("libkernel");
+    callModule = pkg.callModule;
+    connectModule = pkg.connectModule;
+  } else {
+    const pkg = await import("libkmodule");
+    callModule = pkg.callModule;
+    connectModule = pkg.connectModule;
+  }
 }
 
 export async function resolve(domain: string, params: any, force = false) {
-    await loadLibs();
-    const [resp, err] = await callModule(DNS_MODULE, "resolve", {domain, params, force});
+  await loadLibs();
+  const [resp, err] = await callModule(DNS_MODULE, "resolve", {
+    domain,
+    params,
+    force,
+  });
 
-    if (err) {
-        throw  new Error(err);
-    }
+  if (err) {
+    throw new Error(err);
+  }
 
-    return resp;
+  return resp;
+}
+export async function ready() {
+  await loadLibs();
+  const [resp, err] = await callModule(DNS_MODULE, "ready");
+
+  if (err) {
+    throw new Error(err);
+  }
+
+  return resp;
 }
