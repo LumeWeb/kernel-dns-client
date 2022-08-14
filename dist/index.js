@@ -5,19 +5,31 @@ async function loadLibs() {
         return;
     }
     if (typeof window !== "undefined" && window?.document) {
-        const pkg = (await import("libkernel"));
+        const pkg = await import("libkernel");
         callModule = pkg.callModule;
         connectModule = pkg.connectModule;
     }
     else {
-        const pkg = (await import("libkmodule"));
+        const pkg = await import("libkmodule");
         callModule = pkg.callModule;
         connectModule = pkg.connectModule;
     }
 }
 export async function resolve(domain, params, force = false) {
     await loadLibs();
-    const [resp, err] = await callModule(DNS_MODULE, "resolve", { domain, params, force });
+    const [resp, err] = await callModule(DNS_MODULE, "resolve", {
+        domain,
+        params,
+        force,
+    });
+    if (err) {
+        throw new Error(err);
+    }
+    return resp;
+}
+export async function ready() {
+    await loadLibs();
+    const [resp, err] = await callModule(DNS_MODULE, "ready");
     if (err) {
         throw new Error(err);
     }
