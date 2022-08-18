@@ -4,6 +4,7 @@
     "type": "module",
     "main": "dist/index.js",
     "dependencies": {
+        "@lumeweb/resolver-common": "github:LumeWeb/resolver-common",
         "buffer": "^6.0.3",
         "libkernel": "^0.1.43",
         "libkmodule": "^0.2.44",

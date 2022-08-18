@@ -1,3 +1,5 @@
+import { ResolverOptions } from "@lumeweb/resolver-common";
+
 const DNS_MODULE = "AQBLKpieqOfKVRgMa8k45P4S_ILYgJmswVso4vT1qzoG-A";
 
 let callModule: any, connectModule: any;
@@ -17,12 +19,16 @@ async function loadLibs() {
   }
 }
 
-export async function resolve(domain: string, params: any, force = false) {
+export async function resolve(
+  domain: string,
+  options: ResolverOptions,
+  bypassCache = false
+) {
   await loadLibs();
   const [resp, err] = await callModule(DNS_MODULE, "resolve", {
     domain,
-    params,
-    force,
+    options,
+    bypassCache,
   });
 
   if (err) {
@@ -31,6 +37,17 @@ export async function resolve(domain: string, params: any, force = false) {
 
   return resp;
 }
+
+export async function register() {
+  await loadLibs();
+  await callModule(DNS_MODULE, "register");
+}
+
+export async function clear() {
+  await loadLibs();
+  await callModule(DNS_MODULE, "clear");
+}
+
 export async function ready() {
   await loadLibs();
   const [resp, err] = await callModule(DNS_MODULE, "ready");
