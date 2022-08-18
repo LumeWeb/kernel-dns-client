@@ -15,17 +15,25 @@ async function loadLibs() {
         connectModule = pkg.connectModule;
     }
 }
-export async function resolve(domain, params, force = false) {
+export async function resolve(domain, options, bypassCache = false) {
     await loadLibs();
     const [resp, err] = await callModule(DNS_MODULE, "resolve", {
         domain,
-        params,
-        force,
+        options,
+        bypassCache,
     });
     if (err) {
         throw new Error(err);
     }
     return resp;
+}
+export async function register() {
+    await loadLibs();
+    await callModule(DNS_MODULE, "register");
+}
+export async function clear() {
+    await loadLibs();
+    await callModule(DNS_MODULE, "clear");
 }
 export async function ready() {
     await loadLibs();
