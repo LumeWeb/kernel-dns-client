@@ -35,6 +35,14 @@ export async function clear() {
     await loadLibs();
     await callModule(DNS_MODULE, "clear");
 }
+export async function getResolvers() {
+    await loadLibs();
+    const [resp, err] = await callModule(DNS_MODULE, "getResolvers");
+    if (err) {
+        throw new Error(err);
+    }
+    return resp;
+}
 export async function ready() {
     await loadLibs();
     const [resp, err] = await callModule(DNS_MODULE, "ready");
