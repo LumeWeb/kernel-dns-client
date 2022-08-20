@@ -1,4 +1,4 @@
-import { ResolverOptions } from "@lumeweb/resolver-common";
+import { DNS_RECORD_TYPE, ResolverOptions } from "@lumeweb/resolver-common";
 
 const DNS_MODULE = "AQBLKpieqOfKVRgMa8k45P4S_ILYgJmswVso4vT1qzoG-A";
 
@@ -21,7 +21,7 @@ async function loadLibs() {
 
 export async function resolve(
   domain: string,
-  options: ResolverOptions,
+  options: ResolverOptions = { type: DNS_RECORD_TYPE.CONTENT },
   bypassCache = false
 ) {
   await loadLibs();
