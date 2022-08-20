@@ -1,3 +1,4 @@
+import { DNS_RECORD_TYPE } from "@lumeweb/resolver-common";
 const DNS_MODULE = "AQBLKpieqOfKVRgMa8k45P4S_ILYgJmswVso4vT1qzoG-A";
 let callModule, connectModule;
 async function loadLibs() {
@@ -15,7 +16,7 @@ async function loadLibs() {
         connectModule = pkg.connectModule;
     }
 }
-export async function resolve(domain, options, bypassCache = false) {
+export async function resolve(domain, options = { type: DNS_RECORD_TYPE.CONTENT }, bypassCache = false) {
     await loadLibs();
     const [resp, err] = await callModule(DNS_MODULE, "resolve", {
         domain,

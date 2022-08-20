@@ -1,7 +1,7 @@
 import { ResolverOptions } from "@lumeweb/resolver-common";
 export declare function resolve(
   domain: string,
-  options: ResolverOptions,
+  options?: ResolverOptions,
   bypassCache?: boolean
 ): Promise<any>;
 export declare function register(): Promise<void>;
