@@ -9,7 +9,7 @@ export class DnsClient extends Client {
   public async clear(): Promise<void> {
     return this.callModuleReturn("clear");
   }
-  public async getResolvers(): Promise<string> {
+  public async getResolvers(): Promise<string[]> {
     return this.callModuleReturn("getResolvers");
   }
   public async ready(): Promise<void> {
