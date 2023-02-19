@@ -4,7 +4,7 @@
     "type": "module",
     "main": "dist/index.js",
     "dependencies": {
-        "@lumeweb/resolver-common": "github:LumeWeb/resolver-common",
+        "@lumeweb/libkernel-universal": "git+https://git.lumeweb.com/LumeWeb/libkernel-universal.git",
         "libkernel": "^0.1.43",
         "libkmodule": "^0.2.44",
         "libskynet": "^0.0.62"

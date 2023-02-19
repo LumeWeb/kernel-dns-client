@@ -1,71 +1,20 @@
-import { DNS_RECORD_TYPE, ResolverOptions } from "@lumeweb/resolver-common";
+import { Client, factory } from "@lumeweb/libkernel-universal";
 
-const DNS_MODULE = "AQBLKpieqOfKVRgMa8k45P4S_ILYgJmswVso4vT1qzoG-A";
+const MODULE = "PACYNuYbp_5hgCjMK16EGcytB9QCxDLe4_uitahwePdeaA";
 
-let callModule: any, connectModule: any;
-
-async function loadLibs() {
-  if (callModule && connectModule) {
-    return;
+export class DnsClient extends Client {
+  public async register(): Promise<void> {
+    return this.callModuleReturn("register");
   }
-  if (typeof window !== "undefined" && window?.document) {
-    const pkg = await import("libkernel");
-    callModule = pkg.callModule;
-    connectModule = pkg.connectModule;
-  } else {
-    const pkg = await import("libkmodule");
-    callModule = pkg.callModule;
-    connectModule = pkg.connectModule;
+  public async clear(): Promise<void> {
+    return this.callModuleReturn("clear");
+  }
+  public async getResolvers(): Promise<void> {
+    return this.callModuleReturn("clear");
+  }
+  public async ready(): Promise<void> {
+    return this.callModuleReturn("ready");
   }
 }
 
-export async function resolve(
-  domain: string,
-  options: ResolverOptions = { type: DNS_RECORD_TYPE.CONTENT },
-  bypassCache = false
-) {
-  await loadLibs();
-  const [resp, err] = await callModule(DNS_MODULE, "resolve", {
-    domain,
-    options,
-    bypassCache,
-  });
-
-  if (err) {
-    throw new Error(err);
-  }
-
-  return resp;
-}
-
-export async function register() {
-  await loadLibs();
-  await callModule(DNS_MODULE, "register");
-}
-
-export async function clear() {
-  await loadLibs();
-  await callModule(DNS_MODULE, "clear");
-}
-
-export async function getResolvers() {
-  await loadLibs();
-  const [resp, err] = await callModule(DNS_MODULE, "getResolvers");
-
-  if (err) {
-    throw new Error(err);
-  }
-
-  return resp;
-}
-
-export async function ready() {
-  await loadLibs();
-  const [resp, err] = await callModule(DNS_MODULE, "ready");
-
-  if (err) {
-    throw new Error(err);
-  }
-
-  return resp;
-}
+export const createClient = factory<DnsClient>(DnsClient, MODULE);
