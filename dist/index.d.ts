@@ -1,5 +1,5 @@
 import { Client } from "@lumeweb/libkernel-universal";
-import { ResolverOptions } from "@lumeweb/libresolver";
+import { DNSResult, ResolverOptions } from "@lumeweb/libresolver";
 export declare class DnsClient extends Client {
   register(): Promise<void>;
   clear(): Promise<void>;
@@ -9,7 +9,7 @@ export declare class DnsClient extends Client {
     domain: string,
     options?: ResolverOptions,
     bypassCache?: boolean
-  ): Promise<void>;
+  ): Promise<DNSResult>;
 }
 export declare const createClient: (...args: any) => DnsClient;
 //# sourceMappingURL=index.d.ts.map
