@@ -1,4 +1,5 @@
 import { Client, factory } from "@lumeweb/libkernel-universal";
+import { DNS_RECORD_TYPE, ResolverOptions } from "@lumeweb/libresolver";
 
 const MODULE = "PACYNuYbp_5hgCjMK16EGcytB9QCxDLe4_uitahwePdeaA";
 
@@ -13,6 +14,13 @@ export class DnsClient extends Client {
     return this.callModuleReturn("getResolvers");
   }
   public async ready(): Promise<void> {
+    return this.callModuleReturn("ready");
+  }
+  public async resolve(
+    domain: string,
+    options: ResolverOptions = { type: DNS_RECORD_TYPE.CONTENT },
+    bypassCache: boolean = false
+  ): Promise<void> {
     return this.callModuleReturn("ready");
   }
 }
