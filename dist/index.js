@@ -8,7 +8,7 @@ export class DnsClient extends Client {
         return this.callModuleReturn("clear");
     }
     async getResolvers() {
-        return this.callModuleReturn("clear");
+        return this.callModuleReturn("getResolvers");
     }
     async ready() {
         return this.callModuleReturn("ready");
