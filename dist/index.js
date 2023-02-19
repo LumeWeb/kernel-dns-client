@@ -1,10 +1,8 @@
 import { Client, factory } from "@lumeweb/libkernel-universal";
 const MODULE = "PACYNuYbp_5hgCjMK16EGcytB9QCxDLe4_uitahwePdeaA";
 export class DnsClient extends Client {
-    async register(module) {
-        const bag = await this.loadBound(module);
-        const ret = await bag.callModule("register");
-        this.handleError(ret);
+    async register() {
+        return this.callModuleReturn("register");
     }
     async clear() {
         return this.callModuleReturn("clear");

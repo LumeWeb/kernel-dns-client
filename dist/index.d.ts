@@ -1,6 +1,6 @@
 import { Client } from "@lumeweb/libkernel-universal";
 export declare class DnsClient extends Client {
-  register(module: string): Promise<void>;
+  register(): Promise<void>;
   clear(): Promise<void>;
   getResolvers(): Promise<void>;
   ready(): Promise<void>;
