@@ -14,7 +14,7 @@ export class DnsClient extends Client {
   public async clear(): Promise<void> {
     return this.callModuleReturn("clear");
   }
-  public async getResolvers(): Promise<string[]> {
+  get resolvers(): Promise<string[]> {
     return this.callModuleReturn("getResolvers");
   }
   public async ready(): Promise<void> {
