@@ -3,7 +3,7 @@ import { DNSResult, ResolverOptions } from "@lumeweb/libresolver";
 export declare class DnsClient extends Client {
   register(): Promise<void>;
   clear(): Promise<void>;
-  getResolvers(): Promise<string[]>;
+  get resolvers(): Promise<string[]>;
   ready(): Promise<void>;
   resolve(
     domain: string,
