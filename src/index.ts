@@ -4,6 +4,7 @@ import {
   DNSResult,
   ResolverOptions,
 } from "@lumeweb/libresolver";
+import { createModule, ResolverModule } from "./module.js";
 
 const MODULE = "PACYNuYbp_5hgCjMK16EGcytB9QCxDLe4_uitahwePdeaA";
 
@@ -14,8 +15,14 @@ export class DnsClient extends Client {
   public async clear(): Promise<void> {
     return this.callModuleReturn("clear");
   }
-  get resolvers(): Promise<string[]> {
-    return this.callModuleReturn("getResolvers");
+  get resolvers(): Promise<Set<ResolverModule>> {
+    return this.callModuleReturn("getResolvers").then((resolvers: string[]) => {
+      return new Set(
+        resolvers.map((resolver: string): ResolverModule => {
+          return createModule(resolver, this);
+        })
+      );
+    });
   }
   public async ready(): Promise<void> {
     return this.callModuleReturn("ready");
@@ -30,3 +37,4 @@ export class DnsClient extends Client {
 }
 
 export const createClient = factory<DnsClient>(DnsClient, MODULE);
+export * from "./module.js";
