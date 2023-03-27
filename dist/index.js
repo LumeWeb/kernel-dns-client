@@ -1,7 +1,7 @@
 import { Client, factory } from "@lumeweb/libkernel-universal";
 import { DNS_RECORD_TYPE, } from "@lumeweb/libresolver";
 import { createModule } from "./module.js";
-const MODULE = "PAAUkZAnPjxi2CzQWZ7jCVcl-E9lQLvTOwE2vhU0hX5UXg";
+const MODULE = "PADLHYqRfMJpjNqX-oPy1nYkxZ6SoOY-sPYiquhmtfGQFA";
 export class DnsClient extends Client {
     async register() {
         return this.callModuleReturn("register");
