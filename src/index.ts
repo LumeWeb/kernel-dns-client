@@ -24,9 +24,6 @@ export class DnsClient extends Client {
       );
     });
   }
-  public async ready(): Promise<void> {
-    return this.callModuleReturn("ready");
-  }
   public async resolve(
     domain: string,
     options: ResolverOptions = { type: DNS_RECORD_TYPE.CONTENT },
