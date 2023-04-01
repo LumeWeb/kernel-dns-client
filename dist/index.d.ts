@@ -5,7 +5,6 @@ export declare class DnsClient extends Client {
   register(): Promise<void>;
   clear(): Promise<void>;
   get resolvers(): Promise<Set<ResolverModule>>;
-  ready(): Promise<void>;
   resolve(
     domain: string,
     options?: ResolverOptions,

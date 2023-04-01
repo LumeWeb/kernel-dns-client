@@ -16,9 +16,6 @@ export class DnsClient extends Client {
             }));
         });
     }
-    async ready() {
-        return this.callModuleReturn("ready");
-    }
     async resolve(domain, options = { type: DNS_RECORD_TYPE.CONTENT }, bypassCache = false) {
         return this.callModuleReturn("resolve", { domain, options, bypassCache });
     }
