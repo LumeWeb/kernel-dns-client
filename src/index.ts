@@ -1,4 +1,4 @@
-import { Client, factory } from "@lumeweb/libkernel-universal";
+import { Client, factory } from "@lumeweb/libkernel/module";
 import {
   DNS_RECORD_TYPE,
   DNSResult,
@@ -6,7 +6,7 @@ import {
 } from "@lumeweb/libresolver";
 import { createModule, ResolverModule } from "./module.js";
 
-const MODULE = "vAA-phmM1ztqu8zGBKF2nM3b8N_IQGWlB6J_doi2FhqS-A";
+const MODULE = "zduJC2T9pCyTnrYvEacy64LAufhjfpQdpz5sweUgDdGqy4u18LK6yvKLqM";
 
 export class DnsClient extends Client {
   get resolvers(): Promise<Set<ResolverModule>> {
@@ -14,7 +14,7 @@ export class DnsClient extends Client {
       return new Set(
         resolvers.map((resolver: string): ResolverModule => {
           return createModule(resolver, this);
-        })
+        }),
       );
     });
   }
@@ -24,7 +24,7 @@ export class DnsClient extends Client {
   }
 
   public async registerResolver(module: string): Promise<void> {
-    const bag = await this.loadBound(module);
+    const bag = await this.getBound(module);
     const ret = await bag.callModule("register");
     return ret[0];
   }
@@ -36,7 +36,7 @@ export class DnsClient extends Client {
   public async resolve(
     domain: string,
     options: ResolverOptions = { type: DNS_RECORD_TYPE.CONTENT },
-    bypassCache: boolean = false
+    bypassCache: boolean = false,
   ): Promise<DNSResult> {
     return this.callModuleReturn("resolve", { domain, options, bypassCache });
   }

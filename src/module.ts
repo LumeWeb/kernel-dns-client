@@ -1,4 +1,4 @@
-import { Client, factory } from "@lumeweb/libkernel-universal";
+import { Client, factory } from "@lumeweb/libkernel/module";
 import { DnsClient } from "./index.js";
 import {
   DNSResult,
@@ -9,8 +9,8 @@ import {
 export class ResolverModule extends Client {
   private domain: string;
 
-  constructor(domain: string, resolver?: DnsClient) {
-    super();
+  constructor(module: string, domain: string, resolver?: DnsClient) {
+    super(module);
     this._resolver = resolver;
     this.domain = domain;
   }
@@ -28,7 +28,7 @@ export class ResolverModule extends Client {
   async resolve(
     domain: string,
     options: ResolverOptions,
-    bypassCache: boolean
+    bypassCache: boolean,
   ): Promise<DNSResult> {
     try {
       return this.callModuleReturn("resolve", {
@@ -47,6 +47,6 @@ export class ResolverModule extends Client {
 
 export const createModule = (
   module: string,
-  client: DnsClient
+  client: DnsClient,
 ): ResolverModule =>
   factory<ResolverModule>(ResolverModule, module)(module, client);
