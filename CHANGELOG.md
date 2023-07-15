@@ -1,3 +1,10 @@
+# [0.1.0-develop.1](https://git.lumeweb.com/LumeWeb/kernel-dns-client/compare/v0.0.2-develop.1...v0.1.0-develop.1) (2023-07-15)
+
+
+### Features
+
+* add ready method to ResolverModule ([62b7fb0](https://git.lumeweb.com/LumeWeb/kernel-dns-client/commit/62b7fb0292c82f28b134710770f550054bbbbc81))
+
 ## [0.0.2-develop.1](https://git.lumeweb.com/LumeWeb/kernel-dns-client/compare/v0.0.1...v0.0.2-develop.1) (2023-07-05)
 
 
