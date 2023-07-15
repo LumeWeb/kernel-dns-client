@@ -9,7 +9,7 @@
             "version": "0.1.0-develop.1",
             "dependencies": {
                 "@lumeweb/libkernel": "^0.1.0-develop.16",
-                "@lumeweb/libresolver": "^0.0.2-develop.1"
+                "@lumeweb/libresolver": "^0.1.0-develop.1"
             },
             "devDependencies": {
                 "@lumeweb/node-library-preset": "^0.2.7",
@@ -1715,9 +1715,9 @@
             }
         },
         "node_modules/@lumeweb/libresolver": {
-            "version": "0.0.2-develop.1",
-            "resolved": "https://registry.npmjs.org/@lumeweb/libresolver/-/libresolver-0.0.2-develop.1.tgz",
-            "integrity": "sha512-LYtuKN029q5eOC6pnof0he/2C4XEpg/wZPaRNu0eiGvcDrEX/tR9qXhJuYwAwctwhGKxTNrKzNUSnhgXTrl8aQ=="
+            "version": "0.1.0-develop.1",
+            "resolved": "https://registry.npmjs.org/@lumeweb/libresolver/-/libresolver-0.1.0-develop.1.tgz",
+            "integrity": "sha512-vTfeRa1eNGHdBB3IMNjdV+4p0zJ5bEYMLv+N9AwVbINM1mgzETFxU2PSR6+RlyQV2ewgISo/0ODEwLZwyztpDQ=="
         },
         "node_modules/@lumeweb/libweb": {
             "version": "0.2.0-develop.22",
