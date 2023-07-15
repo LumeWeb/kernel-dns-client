@@ -40,8 +40,13 @@ export class ResolverModule extends Client {
       return resolverError(e as Error);
     }
   }
+
   async getSupportedTlds(): Promise<string[]> {
     return this.callModuleReturn("getSupportedTlds");
+  }
+
+  async ready(): Promise<any> {
+    return this.callModuleReturn("ready");
   }
 }
 
