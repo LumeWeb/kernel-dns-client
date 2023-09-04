@@ -6,7 +6,7 @@ import {
 } from "@lumeweb/libresolver";
 import { createModule, ResolverModule } from "./module.js";
 
-const MODULE = "zdiPYCZnofbGf3BjLRdHNfjp2KqPVwQAAgLDoTRH3XzNmd3eeWyJv3GZRy";
+const MODULE = "zdiN14h2ecmQ27hMFiL9ZrH2ZbE6s3ZbUJ7L1gDZiXazdRie9Sa5uRRpvb";
 
 export class DnsClient extends Client {
   get resolvers(): Promise<Set<ResolverModule>> {
